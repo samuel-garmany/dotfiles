@@ -2,7 +2,7 @@
 -- Default autocmds that are always set: https://github.com/LazyVim/LazyVim/blob/main/lua/lazyvim/config/autocmds.lua
 -- Add any additional autocmds here
 --
--- Disable completion on markdown files
+-- Disable completion and mini.pairs for Markdown files
 vim.api.nvim_create_autocmd("FileType", {
   pattern = { "gitcommit", "markdown" },
   callback = function()
