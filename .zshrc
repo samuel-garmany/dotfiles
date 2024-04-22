@@ -1,1 +1,1 @@
-dotfiles/.zshrc
+eval "$(zoxide init zsh)"
