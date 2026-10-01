@@ -1,7 +1,6 @@
 # My dotfiles
 
-This directory contains the dotfiles for my systems, organised as GNU Stow
-packages: each top-level folder mirrors `$HOME` for one program.
+This directory contains the dotfiles for my system.
 
 ## Requirements
 
@@ -28,17 +27,7 @@ $ brew bundle
 then use GNU stow to symlink the packages you want on that machine
 
 ~~~
-$ stow bash git nvim                   # terminal tools (e.g. WSL)
-$ stow niri noctalia                   # desktop only
+$ stow bash git nvim                   # specific tools
+$ stow .                               # everything
 ~~~
 
-If stow reports a conflict with an existing file (such as a distro default
-`.bashrc`), move that file aside and run it again.
-
-## Per-machine settings
-
-`.gitconfig` includes `~/.gitconfig.local`, which is not tracked. Put anything
-machine-specific there, such as a work email.
-
-Noctalia also reads `~/.config/noctalia/10-private.toml`, which is not tracked.
-Location and calendar accounts go there.
