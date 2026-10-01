@@ -7,4 +7,5 @@ foo.*
 *.log
 data
 
-*/lazy-lock.json
+lazy-lock.json
+tmux/.config/tmux/plugins/
