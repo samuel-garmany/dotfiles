@@ -1,6 +1,11 @@
 [user]
 	email = 65299214+samuel-garmany@users.noreply.github.com
 	name = Samuel Garmany
+	signingkey = /home/user/.ssh/id_ed25519.pub
 
 [include]
 	path = ~/.gitconfig.local
+[gpg]
+	format = ssh
+[commit]
+	gpgsign = true
