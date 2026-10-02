@@ -28,6 +28,6 @@ then use GNU stow to symlink the packages you want on that machine
 
 ~~~
 $ stow bash git nvim                   # specific tools
-$ stow .                               # everything
+$ stow */                              # everything
 ~~~
 
