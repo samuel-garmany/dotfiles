@@ -1,33 +1,16 @@
-# My dotfiles
+# dotfiles
 
 This directory contains the dotfiles for my system.
 
-## Requirements
+    git clone git@github.com:samuel-garmany/dotfiles.git ~/dotfiles
+    cd ~/dotfiles
+    stow nvim            # NixOS
+    stow nvim git bash   # WSL and anything else
 
-Ensure you have the following installed on your system
+On NixOS only the Neovim config comes from here. Git, the shell and the
+desktop are set up in /etc/nixos.
 
-- Git
-- Homebrew (or install stow from your package manager and skip ahead)
+If stow complains about an existing file, move it aside and rerun.
 
-## Installation
-
-First, check out the dotfiles repo in your $HOME directory using git
-
-~~~
-$ git clone git@github.com:samuel-garmany/dotfiles.git ~/dotfiles
-$ cd ~/dotfiles
-~~~
-
-install the tools in the `Brewfile`, which includes GNU stow
-
-~~~
-$ brew bundle
-~~~
-
-then use GNU stow to symlink the packages you want on that machine
-
-~~~
-$ stow bash git nvim                   # specific tools
-$ stow */                              # everything
-~~~
-
+`.gitconfig` includes `~/.gitconfig.local`, which is not tracked. Machine
+specific settings go there, like a work email.
