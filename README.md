@@ -21,6 +21,13 @@ cd dotfiles
 then use GNU stow to create symlinks
 
 ~~~
-stow . # or just
+stow <package>
+# for example
 stow nvim
+~~~
+
+to remove a symlink use 
+
+~~~
+stow -D <package>
 ~~~
