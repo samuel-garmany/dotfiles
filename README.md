@@ -31,3 +31,17 @@ to remove a symlink use
 ~~~
 stow -D <package>
 ~~~
+
+## Distrobox
+
+`stow distrobox` puts one manifest per container in `~/.config/distrobox`.
+From the [distrobox assemble docs](https://github.com/89luca89/distrobox/blob/main/docs/usage/distrobox-assemble.md):
+
+> You can specify a custom path for the file using
+
+~~~
+distrobox assemble create --file ~/.config/distrobox/tex.ini
+~~~
+
+> By default, `distrobox assemble` will replace a container only if `replace=true`
+> is specified in the manifest file.
