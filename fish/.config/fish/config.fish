@@ -2,6 +2,7 @@
 # set -gx SYSTEMD_PAGER
 
 if status is-interactive
+    set -g fish_greeting
     command -q bat; and alias cat=bat
     command -q nvim; and alias vim=nvim
     if command -q eza
