@@ -1,10 +1,12 @@
 # Uncomment the following line if you don't like systemctl's auto-paging feature:
 # set -gx SYSTEMD_PAGER
 
+set -gx EDITOR hx
+
 if status is-interactive
     set -g fish_greeting
     command -q bat; and abbr -a cat bat
-    command -q nvim; and abbr -a vim nvim
+    command -q hx; and abbr -a vim hx
     if command -q eza
         abbr -a ls eza
         abbr -a ll eza -l
