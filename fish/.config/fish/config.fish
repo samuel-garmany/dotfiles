@@ -3,12 +3,12 @@
 
 if status is-interactive
     set -g fish_greeting
-    command -q bat; and alias cat=bat
-    command -q nvim; and alias vim=nvim
+    command -q bat; and abbr -a cat bat
+    command -q nvim; and abbr -a vim nvim
     if command -q eza
-        alias ls=eza
-        alias ll="eza -l"
-        alias la="eza -la"
+        abbr -a ls eza
+        abbr -a ll eza -l
+        abbr -a la eza -la
     end
 
     command -q starship; and starship init fish | source
