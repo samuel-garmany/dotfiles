@@ -1,0 +1,15 @@
+[[language]]
+name = "markdown"
+[language.soft-wrap]
+enable = true
+
+[[language]]
+name = "typst"
+[language.soft-wrap]
+enable = true
+
+[[language]]
+name = "latex"
+[language.soft-wrap]
+enable = true
+
