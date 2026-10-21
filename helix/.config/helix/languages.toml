@@ -5,11 +5,19 @@ enable = true
 
 [[language]]
 name = "typst"
+auto-format = true
 [language.soft-wrap]
 enable = true
+
+[language-server.tinymist.config]
+preview.background.enabled = true
+preview.background.args = ["--data-plane-host=127.0.0.1:23635", "--invert-colors=never", "--open"]
 
 [[language]]
 name = "latex"
 [language.soft-wrap]
 enable = true
 
+[[language]]
+name = "nix"
+formatter = { command = "nixfmt", args = ["-"] }
