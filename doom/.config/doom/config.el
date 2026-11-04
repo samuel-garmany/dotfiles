@@ -81,21 +81,36 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-;; Typst: Doom has no module for it, so wire up typst-ts-mode + tinymist here.
-(use-package! typst-ts-mode
+;; Typst. Doom has no module for it; this follows the typst-ts-mode wiki,
+;; tinymist's Emacs guide, and the typst-preview.el README.
+(with-eval-after-load 'eglot
+  (with-eval-after-load 'typst-ts-mode
+    (add-to-list 'eglot-server-programs
+                 `((typst-ts-mode) .
+                   ,(eglot-alternatives `(,typst-ts-lsp-download-path
+                                          "tinymist"
+                                          "typst-lsp"))))))
+
+;; Start eglot automatically, the way Doom's own :lang modules do with +lsp
+(add-hook 'typst-ts-mode-local-vars-hook #'lsp! 'append)
+
+;; Live preview in the browser, updated on every keystroke (not on save)
+(use-package! typst-preview
   :defer t
   :init
-  (after! treesit
-    (add-to-list 'treesit-language-source-alist
-                 '(typst "https://github.com/Ziqi-Yang/tree-sitter-typst")))
-  (set-eglot-client! 'typst-ts-mode '("tinymist"))
-  (add-hook 'typst-ts-mode-local-vars-hook #'lsp! 'append)
+  (setq typst-preview-autostart t)
+  (setq typst-preview-open-browser-automatically t)
+  :custom
+  (typst-preview-browser "default")
+  (typst-preview-invert-colors "auto")
+  (typst-preview-executable "tinymist")
+  (typst-preview-partial-rendering t)
   :config
-  (map! :localleader
-        :map typst-ts-mode-map
-        "c" #'typst-ts-compile
-        "p" #'typst-ts-preview
-        "P" #'typst-ts-compile-and-preview
-        "m" #'typst-ts-main-file-ask
-        "w" #'typst-ts-watch-mode
-        "'" #'typst-ts-edit-indirect))
+  (define-key typst-preview-mode-map (kbd "C-c C-j") 'typst-preview-send-position))
+
+(map! :after typst-ts-mode
+      :localleader
+      :map typst-ts-mode-map
+      "p" #'typst-preview-mode
+      "j" #'typst-preview-send-position
+      "m" #'typst-ts-tmenu)
