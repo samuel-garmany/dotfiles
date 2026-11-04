@@ -80,3 +80,22 @@
 ;;
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
+
+;; Typst: Doom has no module for it, so wire up typst-ts-mode + tinymist here.
+(use-package! typst-ts-mode
+  :defer t
+  :init
+  (after! treesit
+    (add-to-list 'treesit-language-source-alist
+                 '(typst "https://github.com/Ziqi-Yang/tree-sitter-typst")))
+  (set-eglot-client! 'typst-ts-mode '("tinymist"))
+  (add-hook 'typst-ts-mode-local-vars-hook #'lsp! 'append)
+  :config
+  (map! :localleader
+        :map typst-ts-mode-map
+        "c" #'typst-ts-compile
+        "p" #'typst-ts-preview
+        "P" #'typst-ts-compile-and-preview
+        "m" #'typst-ts-main-file-ask
+        "w" #'typst-ts-watch-mode
+        "'" #'typst-ts-edit-indirect))
