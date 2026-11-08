@@ -81,8 +81,7 @@
 ;; You can also try 'gd' (or 'C-c c d') to jump to their definition and see how
 ;; they are implemented.
 
-;; Typst. Doom has no module for it; this follows the typst-ts-mode wiki,
-;; tinymist's Emacs guide, and the typst-preview.el README.
+;; Typst - LaTeX for casuals
 (with-eval-after-load 'eglot
   (with-eval-after-load 'typst-ts-mode
     (add-to-list 'eglot-server-programs
@@ -91,10 +90,8 @@
                                           "tinymist"
                                           "typst-lsp"))))))
 
-;; Start eglot automatically, the way Doom's own :lang modules do with +lsp
 (add-hook 'typst-ts-mode-local-vars-hook #'lsp! 'append)
 
-;; Live preview in the browser, updated on every keystroke (not on save)
 (use-package! typst-preview
   :defer t
   :init
@@ -102,7 +99,8 @@
   (setq typst-preview-open-browser-automatically t)
   :custom
   (typst-preview-browser "default")
-  (typst-preview-invert-colors "auto")
+  ;;(typst-preview-invert-colors "auto")
+  (typst-preview-invert-colors "never")
   (typst-preview-executable "tinymist")
   (typst-preview-partial-rendering t)
   :config

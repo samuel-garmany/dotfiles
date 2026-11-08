@@ -52,7 +52,7 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
 
-;; Typst: recipes from the typst-ts-mode wiki and the typst-preview.el README
+;; Typst!
 (package! typst-ts-mode :recipe (:host codeberg :repo "meow_king/typst-ts-mode"))
 (package! typst-preview
   :recipe (:host github :repo "havarddj/typst-preview.el"))
