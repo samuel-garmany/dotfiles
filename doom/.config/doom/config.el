@@ -112,3 +112,7 @@
       "p" #'typst-preview-mode
       "j" #'typst-preview-send-position
       "m" #'typst-ts-tmenu)
+
+(setq shell-file-name (executable-find "bash"))
+(setq-default vterm-shell "/usr/bin/fish")
+(setq-default explicit-shell-file-name "/usr/bin/fish")
